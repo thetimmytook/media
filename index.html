@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A minimal, self-hosted viewer for comparing two to four images from public URLs."
+    />
+    <title>Image Compare</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main id="app" class="app" hidden>
+      <header class="toolbar">
+        <div class="heading">
+          <span class="eyebrow">Image Compare</span>
+          <h1 id="comparison-title">Comparison</h1>
+        </div>
+
+        <div class="controls" aria-label="Comparison controls">
+          <label class="select-control">
+            <span>A</span>
+            <select id="select-a" aria-label="Select image A"></select>
+          </label>
+
+          <button id="swap-button" class="button" type="button" title="Swap A and B">
+            Swap
+          </button>
+
+          <label class="select-control">
+            <span>B</span>
+            <select id="select-b" aria-label="Select image B"></select>
+          </label>
+
+          <button id="fullscreen-button" class="button" type="button">
+            Fullscreen
+          </button>
+        </div>
+      </header>
+
+      <section id="viewer" class="viewer" aria-label="Image comparison viewer">
+        <div id="stage" class="stage" tabindex="0">
+          <div id="plane-a" class="image-plane">
+            <img id="image-a" alt="" draggable="false" />
+          </div>
+
+          <div id="clip-b" class="clip-layer">
+            <div id="plane-b" class="image-plane">
+              <img id="image-b" alt="" draggable="false" />
+            </div>
+          </div>
+
+          <div class="labels" aria-hidden="true">
+            <span id="label-a" class="image-label image-label-a"></span>
+            <span id="label-b" class="image-label image-label-b"></span>
+          </div>
+
+          <div id="divider" class="divider" role="slider" tabindex="0"
+            aria-label="Comparison divider" aria-valuemin="0" aria-valuemax="100"
+            aria-valuenow="50">
+            <span class="divider-handle" aria-hidden="true">↔</span>
+          </div>
+
+          <div id="loading" class="message-overlay" role="status">
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Loading images…</span>
+          </div>
+
+          <div id="load-error" class="message-overlay error" role="alert" hidden></div>
+        </div>
+
+        <footer class="statusbar">
+          <span id="aspect-warning" class="warning" hidden>Images have different aspect ratios</span>
+          <span class="hint">Wheel to zoom · Drag to pan · Double-click or R to reset</span>
+          <span id="zoom-readout" class="zoom-readout">100%</span>
+        </footer>
+      </section>
+    </main>
+
+    <section id="usage" class="usage" hidden>
+      <div class="usage-card">
+        <span class="eyebrow">Image Compare</span>
+        <h1>Two image URLs are required.</h1>
+        <p>Pass two to four public image URLs through query parameters.</p>
+        <code>?img1=&lt;url&gt;&amp;img2=&lt;url&gt;</code>
+        <p class="usage-note">Optional: title, label1…label4, img3 and img4.</p>
+      </div>
+    </section>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
