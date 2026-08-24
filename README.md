@@ -33,8 +33,26 @@ https://thetimmytook.github.io/media/
 | `label2` | No | Second image label |
 | `img3`, `img4` | No | Additional image URLs |
 | `label3`, `label4` | No | Additional image labels |
+| `preset` | No | Built-in image set: `smoke`, `smoke-flashlites`, `smoke-settings`, `smoke-types`, or `smoke-ir` |
 
 Image URLs must be URL encoded when inserted into the query string.
+
+## Smoke presets
+
+The complete preset exposes four groups in the A/B selectors: Flashlights, Settings, Types, and IR. LAS/TAC 2 is selected as image A by default.
+
+```text
+https://thetimmytook.github.io/media/?preset=smoke
+```
+
+Individual sets are also available:
+
+```text
+https://thetimmytook.github.io/media/?preset=smoke-flashlites
+https://thetimmytook.github.io/media/?preset=smoke-settings
+https://thetimmytook.github.io/media/?preset=smoke-types
+https://thetimmytook.github.io/media/?preset=smoke-ir
+```
 
 ## Two-image example
 
@@ -51,9 +69,10 @@ https://thetimmytook.github.io/media/?title=Smoke%20Settings&img1=https%3A%2F%2F
 ## Controls
 
 - Drag the divider to reveal either image.
-- Use the mouse wheel to zoom around the cursor.
+- Use the mouse wheel to zoom from the center of the viewport.
 - Drag the viewport to pan.
-- Double-click or press `R` to reset zoom and pan.
+- Double-click to reset zoom and pan.
+- Press `R` to reset zoom, pan, and the divider position.
 - Focus the divider and use the arrow keys for precise movement (`Shift` for larger steps).
 
 No files or comparison state are uploaded or stored by the viewer.

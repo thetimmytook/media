@@ -2,23 +2,69 @@
   "use strict";
 
   const params = new URLSearchParams(window.location.search);
-  const items = [];
+  const smokeFlashlites = [
+    { url: "./screens/smoke/flashlites/combo/las-tac2.png", label: "LAS/TAC 2", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/baldpro.png", label: "Baldr Pro", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/dbal.png", label: "DBAL-PL", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/klesch2p.png", label: "Klesch-2P", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/klesch2u.png", label: "Klesch-2U", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/tgl.png", label: "GTL 21", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/x400.png", label: "X400 Ultra", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/combo/xc1.png", label: "XC1", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/dedicated/2d.png", label: "Zenit 2D", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/dedicated/FW501B.png", label: "Ultrafire WF-501B", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/dedicated/m600.png", label: "SureFire M600", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/dedicated/wmx200.png", label: "WMX200", group: "Flashlights" },
+    { url: "./screens/smoke/flashlites/dedicated/xhr35.png", label: "Armytek XHP35", group: "Flashlights" },
+  ];
 
-  for (let index = 1; index <= 4; index += 1) {
-    const url = params.get(`img${index}`)?.trim();
-    if (!url) continue;
+  const smokeSettings = [
+    { url: "./screens/smoke/settings/original.png", label: "Original", group: "Settings" },
+    { url: "./screens/smoke/settings/low.png", label: "Low", group: "Settings" },
+    { url: "./screens/smoke/settings/medium.png", label: "Medium", group: "Settings" },
+    { url: "./screens/smoke/settings/high.png", label: "High", group: "Settings" },
+    { url: "./screens/smoke/settings/ultra.png", label: "Ultra", group: "Settings" },
+  ];
 
-    items.push({
-      sourceIndex: index,
-      url,
-      label: params.get(`label${index}`)?.trim() || `Image ${index}`,
-    });
+  const smokeTypes = [
+    { url: "./screens/smoke/types/rdg-2b.png", label: "RDG-2B", group: "Types" },
+    { url: "./screens/smoke/types/m18.png", label: "M18", group: "Types" },
+  ];
+
+  const smokeIr = [
+    { url: "./screens/smoke/ir/ir-light.png", label: "IR light", group: "IR" },
+    { url: "./screens/smoke/ir/x400.png", label: "X400 IR", group: "IR" },
+  ];
+
+  const presets = {
+    smoke: [...smokeFlashlites, ...smokeSettings, ...smokeTypes, ...smokeIr],
+    "smoke-flashlites": smokeFlashlites,
+    "smoke-settings": smokeSettings,
+    "smoke-types": smokeTypes,
+    "smoke-ir": [smokeFlashlites[0], ...smokeIr],
+  };
+
+  const presetName = params.get("preset")?.trim();
+  const presetItems = presetName ? presets[presetName] : null;
+  const items = presetItems ? presetItems.map((item) => ({ ...item })) : [];
+
+  if (!presetItems) {
+    for (let index = 1; index <= 4; index += 1) {
+      const url = params.get(`img${index}`)?.trim();
+      if (!url) continue;
+
+      items.push({
+        sourceIndex: index,
+        url,
+        label: params.get(`label${index}`)?.trim() || `Image ${index}`,
+      });
+    }
   }
 
   const app = document.querySelector("#app");
   const usage = document.querySelector("#usage");
 
-  if (!params.get("img1")?.trim() || !params.get("img2")?.trim()) {
+  if (items.length < 2) {
     usage.hidden = false;
     return;
   }
@@ -59,16 +105,44 @@
     dividerPointer: null,
   };
 
-  const comparisonTitle = params.get("title")?.trim() || "Image Comparison";
+  const presetTitles = {
+    smoke: "Smoke Comparison",
+    "smoke-flashlites": "Smoke Flashlights",
+    "smoke-settings": "Smoke Settings",
+    "smoke-types": "Smoke Types",
+    "smoke-ir": "Smoke IR",
+  };
+  const comparisonTitle = params.get("title")?.trim()
+    || presetTitles[presetName]
+    || "Image Comparison";
   elements.title.textContent = comparisonTitle;
   document.title = `${comparisonTitle} · Image Compare`;
 
   function populateSelects() {
+    const groupsA = new Map();
+    const groupsB = new Map();
+
     for (const [index, item] of items.entries()) {
       const optionA = new Option(item.label, String(index));
       const optionB = new Option(item.label, String(index));
-      elements.selectA.add(optionA);
-      elements.selectB.add(optionB);
+
+      if (item.group) {
+        if (!groupsA.has(item.group)) {
+          const groupA = document.createElement("optgroup");
+          const groupB = document.createElement("optgroup");
+          groupA.label = item.group;
+          groupB.label = item.group;
+          groupsA.set(item.group, groupA);
+          groupsB.set(item.group, groupB);
+          elements.selectA.add(groupA);
+          elements.selectB.add(groupB);
+        }
+        groupsA.get(item.group).append(optionA);
+        groupsB.get(item.group).append(optionB);
+      } else {
+        elements.selectA.add(optionA);
+        elements.selectB.add(optionB);
+      }
     }
 
     elements.selectA.value = String(state.selectedA);
@@ -296,17 +370,8 @@
   elements.stage.addEventListener("wheel", (event) => {
     event.preventDefault();
 
-    const bounds = elements.stage.getBoundingClientRect();
-    const cursorX = event.clientX - bounds.left - bounds.width / 2;
-    const cursorY = event.clientY - bounds.top - bounds.height / 2;
-    const worldX = (cursorX - state.panX) / state.zoom;
-    const worldY = (cursorY - state.panY) / state.zoom;
     const factor = Math.exp(-event.deltaY * 0.0015);
-    const nextZoom = Math.min(12, Math.max(0.25, state.zoom * factor));
-
-    state.panX = cursorX - worldX * nextZoom;
-    state.panY = cursorY - worldY * nextZoom;
-    state.zoom = nextZoom;
+    state.zoom = Math.min(12, Math.max(0.25, state.zoom * factor));
     setTransforms();
   }, { passive: false });
 
@@ -318,6 +383,7 @@
     if (event.key.toLowerCase() === "r") {
       event.preventDefault();
       resetView();
+      setDivider(50);
     }
   });
 

@@ -367,6 +367,12 @@ h1 {
   font-size: 0.84rem;
 }
 
+.usage-note code {
+  display: inline;
+  padding: 2px 5px;
+  white-space: normal;
+}
+
 [hidden] {
   display: none !important;
 }
