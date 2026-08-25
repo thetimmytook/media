@@ -59,7 +59,10 @@
           <div id="divider" class="divider" role="slider" tabindex="0"
             aria-label="Comparison divider" aria-valuemin="0" aria-valuemax="100"
             aria-valuenow="50">
-            <span class="divider-handle" aria-hidden="true">↔</span>
+            <span id="divider-handle" class="divider-handle" aria-hidden="true">
+              <span class="divider-icon">↔</span>
+              <span id="zoom-indicator" class="zoom-indicator">100%</span>
+            </span>
           </div>
 
           <div id="loading" class="message-overlay" role="status">
@@ -72,8 +75,16 @@
 
         <footer class="statusbar">
           <span id="aspect-warning" class="warning" hidden>Images have different aspect ratios</span>
-          <span class="hint">Wheel to zoom · Drag to pan · Double-click resets view · R resets all</span>
-          <span id="zoom-readout" class="zoom-readout">100%</span>
+          <span class="hint">
+            <span class="shortcut"><kbd>Wheel</kbd> Zoom</span>
+            <span aria-hidden="true">·</span>
+            <span class="shortcut"><kbd>Drag</kbd> Pan</span>
+            <span aria-hidden="true">·</span>
+            <span class="shortcut"><kbd>Double-click</kbd> Reset view</span>
+            <span aria-hidden="true">·</span>
+            <span class="shortcut"><kbd>R</kbd> Reset all</span>
+          </span>
+          <span aria-hidden="true"></span>
         </footer>
       </section>
     </main>
@@ -81,9 +92,9 @@
     <section id="usage" class="usage" hidden>
       <div class="usage-card">
         <span class="eyebrow">Image Compare</span>
-        <h1>Two image URLs are required.</h1>
-        <p>Pass two to four public image URLs through query parameters.</p>
-        <code>?img1=&lt;url&gt;&amp;img2=&lt;url&gt;</code>
+        <h1 id="usage-title">Two image URLs are required.</h1>
+        <p id="usage-message">Pass two to four public image URLs through query parameters.</p>
+        <code id="usage-code">?img1=&lt;url&gt;&amp;img2=&lt;url&gt;</code>
         <p class="usage-note">Or open the complete smoke set with <code>?preset=smoke</code>.</p>
       </div>
     </section>

@@ -1,0 +1,59 @@
+{
+  "title": "Smoke Comparison",
+  "images": [
+    { "id": "las-tac2", "label": "LAS/TAC 2", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/las-tac2.png" },
+    { "id": "baldr-pro", "label": "Baldr Pro", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/baldpro.png" },
+    { "id": "dbal-pl", "label": "DBAL-PL", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/dbal.png" },
+    { "id": "klesch-2p", "label": "Klesch-2P", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/klesch2p.png" },
+    { "id": "klesch-2u", "label": "Klesch-2U", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/klesch2u.png" },
+    { "id": "gtl-21", "label": "GTL 21", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/tgl.png" },
+    { "id": "x400-ultra", "label": "X400 Ultra", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/x400.png" },
+    { "id": "xc1", "label": "XC1", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/xc1.png" },
+    { "id": "zenit-2d", "label": "Zenit 2D", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/2d.png" },
+    { "id": "wf-501b", "label": "Ultrafire WF-501B", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/FW501B.png" },
+    { "id": "m600", "label": "SureFire M600", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/m600.png" },
+    { "id": "wmx200", "label": "WMX200", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/wmx200.png" },
+    { "id": "xhp35", "label": "Armytek XHP35", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/xhr35.png" },
+    { "id": "original", "label": "Original", "group": "Settings", "src": "../screens/smoke/settings/original.png" },
+    { "id": "low", "label": "Low", "group": "Settings", "src": "../screens/smoke/settings/low.png" },
+    { "id": "medium", "label": "Medium", "group": "Settings", "src": "../screens/smoke/settings/medium.png" },
+    { "id": "high", "label": "High", "group": "Settings", "src": "../screens/smoke/settings/high.png" },
+    { "id": "ultra", "label": "Ultra", "group": "Settings", "src": "../screens/smoke/settings/ultra.png" },
+    { "id": "rdg-2b", "label": "RDG-2B", "group": "Types", "src": "../screens/smoke/types/rdg-2b.png" },
+    { "id": "m18", "label": "M18", "group": "Types", "src": "../screens/smoke/types/m18.png" },
+    { "id": "ir-light", "label": "IR light", "group": "IR", "src": "../screens/smoke/ir/ir-light.png" },
+    { "id": "x400-ir", "label": "X400 IR", "group": "IR", "src": "../screens/smoke/ir/x400.png" }
+  ],
+  "views": {
+    "all": {
+      "title": "Smoke Comparison",
+      "images": "*",
+      "defaultA": "las-tac2",
+      "defaultB": "baldr-pro"
+    },
+    "flashlites": {
+      "title": "Smoke Flashlights",
+      "images": ["las-tac2", "baldr-pro", "dbal-pl", "klesch-2p", "klesch-2u", "gtl-21", "x400-ultra", "xc1", "zenit-2d", "wf-501b", "m600", "wmx200", "xhp35"],
+      "defaultA": "las-tac2",
+      "defaultB": "baldr-pro"
+    },
+    "settings": {
+      "title": "Smoke Settings",
+      "images": ["original", "low", "medium", "high", "ultra"],
+      "defaultA": "original",
+      "defaultB": "low"
+    },
+    "types": {
+      "title": "Smoke Types",
+      "images": ["rdg-2b", "m18"],
+      "defaultA": "rdg-2b",
+      "defaultB": "m18"
+    },
+    "ir": {
+      "title": "Smoke IR",
+      "images": ["las-tac2", "ir-light", "x400-ir"],
+      "defaultA": "las-tac2",
+      "defaultB": "ir-light"
+    }
+  }
+}
