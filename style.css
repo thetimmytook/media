@@ -262,6 +262,28 @@ h1 {
   backdrop-filter: blur(8px);
 }
 
+.divider-icon,
+.zoom-indicator {
+  grid-area: 1 / 1;
+  transition: opacity 300ms ease;
+}
+
+.zoom-indicator {
+  opacity: 0;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.divider-handle.is-zooming .divider-icon {
+  opacity: 0;
+}
+
+.divider-handle.is-zooming .zoom-indicator {
+  opacity: 1;
+  transition-duration: 0ms;
+}
+
 .message-overlay {
   position: absolute;
   inset: 0;
@@ -313,13 +335,25 @@ h1 {
 }
 
 .hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   text-align: center;
 }
 
-.zoom-readout {
-  justify-self: end;
+.shortcut {
+  white-space: nowrap;
+}
+
+.shortcut kbd {
+  padding: 2px 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--panel-raised);
   color: var(--text);
-  font-variant-numeric: tabular-nums;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .usage {
