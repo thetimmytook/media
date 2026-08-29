@@ -190,6 +190,8 @@
       panY: 0,
       generation: 0,
       panPointer: null,
+      activePointers: new Map(),
+      pinchGesture: null,
       dividerPointer: null,
       zoomHideTimer: null,
     };
@@ -387,19 +389,65 @@
       }
     });
 
-    elements.stage.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0 || state.dividerPointer !== null) return;
-      state.panPointer = {
-        id: event.pointerId,
-        startX: event.clientX,
-        startY: event.clientY,
+    function getPinchGeometry() {
+      const [pointA, pointB] = [...state.activePointers.values()];
+      return {
+        distance: Math.max(1, Math.hypot(pointB.x - pointA.x, pointB.y - pointA.y)),
+        midpointX: (pointA.x + pointB.x) / 2,
+        midpointY: (pointA.y + pointB.y) / 2,
+      };
+    }
+
+    function beginPinch() {
+      const geometry = getPinchGeometry();
+      state.pinchGesture = {
+        ...geometry,
+        zoom: state.zoom,
         panX: state.panX,
         panY: state.panY,
       };
+      state.panPointer = null;
+    }
+
+    function beginPan(pointerId, point) {
+      state.panPointer = {
+        id: pointerId,
+        startX: point.x,
+        startY: point.y,
+        panX: state.panX,
+        panY: state.panY,
+      };
+      state.pinchGesture = null;
+    }
+
+    elements.stage.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || state.dividerPointer !== null) return;
+      state.activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
       elements.stage.setPointerCapture(event.pointerId);
       elements.stage.classList.add("is-panning");
+
+      if (state.activePointers.size >= 2) beginPinch();
+      else beginPan(event.pointerId, state.activePointers.get(event.pointerId));
     });
+
     elements.stage.addEventListener("pointermove", (event) => {
+      if (!state.activePointers.has(event.pointerId)) return;
+      state.activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+      if (state.activePointers.size >= 2) {
+        if (!state.pinchGesture) beginPinch();
+        const geometry = getPinchGeometry();
+        state.zoom = Math.min(
+          12,
+          Math.max(0.25, state.pinchGesture.zoom * (geometry.distance / state.pinchGesture.distance)),
+        );
+        state.panX = state.pinchGesture.panX + geometry.midpointX - state.pinchGesture.midpointX;
+        state.panY = state.pinchGesture.panY + geometry.midpointY - state.pinchGesture.midpointY;
+        setTransforms();
+        showZoomIndicator();
+        return;
+      }
+
       if (!state.panPointer || event.pointerId !== state.panPointer.id) return;
       state.panX = state.panPointer.panX + event.clientX - state.panPointer.startX;
       state.panY = state.panPointer.panY + event.clientY - state.panPointer.startY;
@@ -407,11 +455,21 @@
     });
 
     function endPan(event) {
-      if (!state.panPointer || event.pointerId !== state.panPointer.id) return;
-      state.panPointer = null;
-      elements.stage.classList.remove("is-panning");
+      if (!state.activePointers.has(event.pointerId)) return;
+      state.activePointers.delete(event.pointerId);
       if (elements.stage.hasPointerCapture(event.pointerId)) {
         elements.stage.releasePointerCapture(event.pointerId);
+      }
+
+      if (state.activePointers.size >= 2) {
+        beginPinch();
+      } else if (state.activePointers.size === 1) {
+        const [remainingPointer] = state.activePointers.entries();
+        beginPan(remainingPointer[0], remainingPointer[1]);
+      } else {
+        state.panPointer = null;
+        state.pinchGesture = null;
+        elements.stage.classList.remove("is-panning");
       }
     }
 

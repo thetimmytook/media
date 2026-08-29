@@ -194,6 +194,7 @@ Use `pres` and `view` for new presets. The `preset` parameter exists only for th
 ## Controls
 
 - **Wheel**: zoom from the center of the viewport. The current percentage temporarily replaces the divider handle icon.
+- **Pinch**: zoom with two fingers on a touchscreen; moving both fingers also pans the images.
 - **Drag**: pan both images together.
 - **Double-click**: reset zoom and pan.
 - **R**: reset zoom, pan, and the divider to its centered default.
