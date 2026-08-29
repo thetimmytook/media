@@ -177,6 +177,24 @@ https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=types
 https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=ir
 ```
 
+## Included gun mount vs helmet preset
+
+The included [gun-mount-vs-helm.json](./presets/gun-mount-vs-helm.json) compares the LAS/TAC 2 flashlight mounted on a gun and on a helmet.
+
+```text
+https://thetimmytook.github.io/media/?pres=./presets/gun-mount-vs-helm.json
+```
+
+## Included CS2 gas preset
+
+The included [cs2-gas.json](./presets/cs2-gas.json) compares gas visibility through FLIR and T-7 thermal devices. Its `all` view contains all four images, while the `flir` and `t7` views provide direct two-image comparisons.
+
+```text
+https://thetimmytook.github.io/media/?pres=./presets/cs2-gas.json
+https://thetimmytook.github.io/media/?pres=./presets/cs2-gas.json&view=flir
+https://thetimmytook.github.io/media/?pres=./presets/cs2-gas.json&view=t7
+```
+
 ## Legacy preset aliases
 
 Existing links continue to work. These aliases map internally to the included JSON preset and its views:

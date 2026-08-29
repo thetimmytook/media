@@ -1,0 +1,29 @@
+{
+  "title": "CS2 Gas Comparison",
+  "images": [
+    { "id": "flir-no-gas", "label": "FLIR — No gas", "group": "FLIR", "src": "../screens/cs2-gas/flir-no-gas-cs.png" },
+    { "id": "flir-gas", "label": "FLIR — Gas", "group": "FLIR", "src": "../screens/cs2-gas/flir-cs.png" },
+    { "id": "t7-no-gas", "label": "T-7 — No gas", "group": "T-7", "src": "../screens/cs2-gas/t7-no-gas-cs.png" },
+    { "id": "t7-gas", "label": "T-7 — Gas", "group": "T-7", "src": "../screens/cs2-gas/t7-cs.png" }
+  ],
+  "views": {
+    "all": {
+      "title": "CS2 Gas Comparison",
+      "images": "*",
+      "defaultA": "flir-no-gas",
+      "defaultB": "flir-gas"
+    },
+    "flir": {
+      "title": "CS2 Gas — FLIR",
+      "images": ["flir-no-gas", "flir-gas"],
+      "defaultA": "flir-no-gas",
+      "defaultB": "flir-gas"
+    },
+    "t7": {
+      "title": "CS2 Gas — T-7",
+      "images": ["t7-no-gas", "t7-gas"],
+      "defaultA": "t7-no-gas",
+      "defaultB": "t7-gas"
+    }
+  }
+}

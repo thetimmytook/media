@@ -1,0 +1,23 @@
+{
+  "title": "Gun Mount vs Helmet",
+  "images": [
+    {
+      "id": "las-tac2-gun",
+      "label": "LAS/TAC 2 — Gun mount",
+      "src": "../screens/smoke/gun-mount-vs-helm/las-tac2-gun.png"
+    },
+    {
+      "id": "las-tac2-helm",
+      "label": "LAS/TAC 2 — Helmet mount",
+      "src": "../screens/smoke/gun-mount-vs-helm/las-tac2-helm.png"
+    }
+  ],
+  "views": {
+    "all": {
+      "title": "Gun Mount vs Helmet",
+      "images": "*",
+      "defaultA": "las-tac2-gun",
+      "defaultB": "las-tac2-helm"
+    }
+  }
+}
