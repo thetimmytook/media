@@ -26,7 +26,8 @@
     { "id": "x400-ir", "label": "X400 IR", "group": "IR", "src": "../screens/smoke/ir/x400.png" },
     { "id": "45deg-x400-original", "label": "X400 Original", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-x400-original.png" },
     { "id": "45deg-x400", "label": "X400", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-x400.png" },
-    { "id": "45deg-klesch-2p", "label": "Klesch-2P", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2p.png" }
+    { "id": "45deg-klesch-2p", "label": "Klesch-2P", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2p.png" },
+    { "id": "45deg-klesch-2u", "label": "Klesch-2U", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2u.png" }
   ],
   "views": {
     "all": {
@@ -61,7 +62,7 @@
     },
     "45deg": {
       "title": "45° Peripheral Vision",
-      "images": ["45deg-x400-original", "45deg-x400", "45deg-klesch-2p"],
+      "images": ["45deg-x400-original", "45deg-x400", "45deg-klesch-2p", "45deg-klesch-2u"],
       "defaultA": "45deg-x400-original",
       "defaultB": "45deg-x400"
     }
