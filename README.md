@@ -157,15 +157,16 @@ Preset files are validated in the browser. Duplicate IDs, unknown image IDs, uns
 
 ## Included smoke preset
 
-The included [smoke.json](./presets/smoke.json) contains four selector groups: Flashlights, Settings, Types, and IR. It exposes five views:
+The included [smoke.json](./presets/smoke.json) contains five selector groups: Flashlights, Settings, Types, IR, and 45° Peripheral Vision. It exposes six views:
 
 | View | Contents | Default comparison |
 | --- | --- | --- |
-| `all` | Every image in all four groups | LAS/TAC 2 vs Baldr Pro |
+| `all` | Every image in all five groups | LAS/TAC 2 vs Baldr Pro |
 | `flashlites` | Combined devices and dedicated flashlights | LAS/TAC 2 vs Baldr Pro |
 | `settings` | Original, Low, Medium, High, and Ultra | Original vs Low |
 | `types` | RDG-2B and M18 | RDG-2B vs M18 |
 | `ir` | LAS/TAC 2 reference and IR devices | LAS/TAC 2 vs IR light |
+| `45deg` | Flashlight visibility at a 45° viewing angle | X400 Original vs X400 |
 
 Published URLs:
 
@@ -175,6 +176,7 @@ https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=flashlites
 https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=settings
 https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=types
 https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=ir
+https://thetimmytook.github.io/media/?pres=./presets/smoke.json&view=45deg
 ```
 
 ## Included gun mount vs helmet preset

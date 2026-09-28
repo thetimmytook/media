@@ -8,6 +8,7 @@
     { "id": "klesch-2u", "label": "Klesch-2U", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/klesch2u.png" },
     { "id": "gtl-21", "label": "GTL 21", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/tgl.png" },
     { "id": "x400-ultra", "label": "X400 Ultra", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/x400.png" },
+    { "id": "double-x400", "label": "Double X400", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/double-x400.png" },
     { "id": "xc1", "label": "XC1", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/xc1.png" },
     { "id": "zenit-2d", "label": "Zenit 2D", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/2d.png" },
     { "id": "wf-501b", "label": "Ultrafire WF-501B", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/FW501B.png" },
@@ -22,7 +23,10 @@
     { "id": "rdg-2b", "label": "RDG-2B", "group": "Types", "src": "../screens/smoke/types/rdg-2b.png" },
     { "id": "m18", "label": "M18", "group": "Types", "src": "../screens/smoke/types/m18.png" },
     { "id": "ir-light", "label": "IR light", "group": "IR", "src": "../screens/smoke/ir/ir-light.png" },
-    { "id": "x400-ir", "label": "X400 IR", "group": "IR", "src": "../screens/smoke/ir/x400.png" }
+    { "id": "x400-ir", "label": "X400 IR", "group": "IR", "src": "../screens/smoke/ir/x400.png" },
+    { "id": "45deg-x400-original", "label": "X400 Original", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-x400-original.png" },
+    { "id": "45deg-x400", "label": "X400", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-x400.png" },
+    { "id": "45deg-klesch-2p", "label": "Klesch-2P", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2p.png" }
   ],
   "views": {
     "all": {
@@ -33,7 +37,7 @@
     },
     "flashlites": {
       "title": "Smoke Flashlights",
-      "images": ["las-tac2", "baldr-pro", "dbal-pl", "klesch-2p", "klesch-2u", "gtl-21", "x400-ultra", "xc1", "zenit-2d", "wf-501b", "m600", "wmx200", "xhp35"],
+      "images": ["las-tac2", "baldr-pro", "dbal-pl", "klesch-2p", "klesch-2u", "gtl-21", "x400-ultra", "double-x400", "xc1", "zenit-2d", "wf-501b", "m600", "wmx200", "xhp35"],
       "defaultA": "las-tac2",
       "defaultB": "baldr-pro"
     },
@@ -54,6 +58,12 @@
       "images": ["las-tac2", "ir-light", "x400-ir"],
       "defaultA": "las-tac2",
       "defaultB": "ir-light"
+    },
+    "45deg": {
+      "title": "45° Peripheral Vision",
+      "images": ["45deg-x400-original", "45deg-x400", "45deg-klesch-2p"],
+      "defaultA": "45deg-x400-original",
+      "defaultB": "45deg-x400"
     }
   }
 }
