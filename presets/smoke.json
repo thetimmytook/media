@@ -5,10 +5,11 @@
     { "id": "baldr-pro", "label": "Baldr Pro", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/baldpro.png" },
     { "id": "dbal-pl", "label": "DBAL-PL", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/dbal.png" },
     { "id": "klesch-2p", "label": "Klesch-2P", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/klesch2p.png" },
-    { "id": "klesch-2u", "label": "Klesch-2U", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/klesch2u.png" },
+    { "id": "klesch-2u", "label": "Klesch-2U", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/klesch2u.png" },
     { "id": "gtl-21", "label": "GTL 21", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/tgl.png" },
     { "id": "x400-ultra", "label": "X400 Ultra", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/x400.png" },
     { "id": "double-x400", "label": "Double X400", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/double-x400.png" },
+    { "id": "double-klesch-2u", "label": "Double Klesch-2U", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/double-klesch-2u.png" },
     { "id": "xc1", "label": "XC1", "group": "Flashlights", "src": "../screens/smoke/flashlites/combo/xc1.png" },
     { "id": "zenit-2d", "label": "Zenit 2D", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/2d.png" },
     { "id": "wf-501b", "label": "Ultrafire WF-501B", "group": "Flashlights", "src": "../screens/smoke/flashlites/dedicated/FW501B.png" },
@@ -27,7 +28,8 @@
     { "id": "45deg-x400-original", "label": "X400 Original", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-x400-original.png" },
     { "id": "45deg-x400", "label": "X400", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-x400.png" },
     { "id": "45deg-klesch-2p", "label": "Klesch-2P", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2p.png" },
-    { "id": "45deg-klesch-2u", "label": "Klesch-2U", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2u.png" }
+    { "id": "45deg-klesch-2u", "label": "Klesch-2U", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2u.png" },
+    { "id": "45deg-klesch-2u-nvg", "label": "Klesch-2U + NVG", "group": "45° Peripheral Vision", "src": "../screens/smoke/45deg/45deg-klesch-2u-nvg.png" }
   ],
   "views": {
     "all": {
@@ -38,7 +40,7 @@
     },
     "flashlites": {
       "title": "Smoke Flashlights",
-      "images": ["las-tac2", "baldr-pro", "dbal-pl", "klesch-2p", "klesch-2u", "gtl-21", "x400-ultra", "double-x400", "xc1", "zenit-2d", "wf-501b", "m600", "wmx200", "xhp35"],
+      "images": ["las-tac2", "baldr-pro", "dbal-pl", "klesch-2p", "klesch-2u", "gtl-21", "x400-ultra", "double-x400", "double-klesch-2u", "xc1", "zenit-2d", "wf-501b", "m600", "wmx200", "xhp35"],
       "defaultA": "las-tac2",
       "defaultB": "baldr-pro"
     },
@@ -62,7 +64,7 @@
     },
     "45deg": {
       "title": "45° Peripheral Vision",
-      "images": ["45deg-x400-original", "45deg-x400", "45deg-klesch-2p", "45deg-klesch-2u"],
+      "images": ["45deg-x400-original", "45deg-x400", "45deg-klesch-2p", "45deg-klesch-2u", "45deg-klesch-2u-nvg"],
       "defaultA": "45deg-x400-original",
       "defaultB": "45deg-x400"
     }
