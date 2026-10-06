@@ -197,6 +197,17 @@ https://thetimmytook.github.io/media/?pres=./presets/cs2-gas.json&view=flir
 https://thetimmytook.github.io/media/?pres=./presets/cs2-gas.json&view=t7
 ```
 
+## Included PvP smoke preset
+
+The included [pvp-smoke.json](./presets/pvp-smoke.json) compares 13 flashlights across three PvP smoke scenarios: the attacker in smoke, both players in smoke, and the local player in smoke.
+
+```text
+https://thetimmytook.github.io/media/?pres=./presets/pvp-smoke.json
+https://thetimmytook.github.io/media/?pres=./presets/pvp-smoke.json&view=attacker-in-smoke
+https://thetimmytook.github.io/media/?pres=./presets/pvp-smoke.json&view=both-in-smoke
+https://thetimmytook.github.io/media/?pres=./presets/pvp-smoke.json&view=me-in-smoke
+```
+
 ## Legacy preset aliases
 
 Existing links continue to work. These aliases map internally to the included JSON preset and its views:

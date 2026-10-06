@@ -1,0 +1,72 @@
+{
+  "title": "PvP Smoke Comparison",
+  "images": [
+    { "id": "attacker-2d", "label": "2D", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/2d.png" },
+    { "id": "attacker-baldr-pro", "label": "Baldr Pro", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/bald-pro.png" },
+    { "id": "attacker-gtl-21", "label": "GTL 21", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/gtl21.png" },
+    { "id": "attacker-klesch-2p", "label": "Klesch-2P", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/klesch-2p.png" },
+    { "id": "attacker-klesch-2u", "label": "Klesch-2U", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/klesch-2u.png" },
+    { "id": "attacker-las-tac-2", "label": "LAS/TAC 2", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/las-tac-2.png" },
+    { "id": "attacker-m600u", "label": "SureFire M600U", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/m600u.png" },
+    { "id": "attacker-mawl-c1", "label": "MAWL-C1+", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/mawl-c1.png" },
+    { "id": "attacker-wf501b", "label": "Ultrafire WF-501B", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/wf501b.png" },
+    { "id": "attacker-wmx200", "label": "WMX200", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/wmx200.png" },
+    { "id": "attacker-x400", "label": "X400 Ultra", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/x400.png" },
+    { "id": "attacker-xc1", "label": "XC1", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/xc1.png" },
+    { "id": "attacker-xhp35", "label": "Armytek XHP35", "group": "Attacker in Smoke", "src": "../screens/pvp/attacker-in-smoke/xhp35.png" },
+
+    { "id": "both-2d", "label": "2D", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/2d.png" },
+    { "id": "both-baldr-pro", "label": "Baldr Pro", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/bald-pro.png" },
+    { "id": "both-gtl-21", "label": "GTL 21", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/gtl21.png" },
+    { "id": "both-klesch-2p", "label": "Klesch-2P", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/klesch-2p.png" },
+    { "id": "both-klesch-2u", "label": "Klesch-2U", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/klesch-2u.png" },
+    { "id": "both-las-tac-2", "label": "LAS/TAC 2", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/las-tac-2.png" },
+    { "id": "both-m600u", "label": "SureFire M600U", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/m600u.png" },
+    { "id": "both-mawl-c1", "label": "MAWL-C1+", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/mawl-c1.png" },
+    { "id": "both-wf501b", "label": "Ultrafire WF-501B", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/wf501b.png" },
+    { "id": "both-wmx200", "label": "WMX200", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/wmx200.png" },
+    { "id": "both-x400", "label": "X400 Ultra", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/x400.png" },
+    { "id": "both-xc1", "label": "XC1", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/xc1.png" },
+    { "id": "both-xhp35", "label": "Armytek XHP35", "group": "Both in Smoke", "src": "../screens/pvp/both-in-smoke/xhp35.png" },
+
+    { "id": "me-2d", "label": "2D", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/2d.png" },
+    { "id": "me-baldr-pro", "label": "Baldr Pro", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/bald-pro.png" },
+    { "id": "me-gtl-21", "label": "GTL 21", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/gtl21.png" },
+    { "id": "me-klesch-2p", "label": "Klesch-2P", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/klesch-2p.png" },
+    { "id": "me-klesch-2u", "label": "Klesch-2U", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/klesch-2u.png" },
+    { "id": "me-las-tac-2", "label": "LAS/TAC 2", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/las-tac-2.png" },
+    { "id": "me-m600u", "label": "SureFire M600U", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/m600u.png" },
+    { "id": "me-mawl-c1", "label": "MAWL-C1+", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/mawl-c1.png" },
+    { "id": "me-wf501b", "label": "Ultrafire WF-501B", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/wf501b.png" },
+    { "id": "me-wmx200", "label": "WMX200", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/wmx200.png" },
+    { "id": "me-x400", "label": "X400 Ultra", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/x400.png" },
+    { "id": "me-xc1", "label": "XC1", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/xc1.png" },
+    { "id": "me-xhp35", "label": "Armytek XHP35", "group": "Me in Smoke", "src": "../screens/pvp/me-in-smoke/xhp35.png" }
+  ],
+  "views": {
+    "all": {
+      "title": "PvP Smoke Comparison",
+      "images": "*",
+      "defaultA": "attacker-las-tac-2",
+      "defaultB": "attacker-klesch-2u"
+    },
+    "attacker-in-smoke": {
+      "title": "PvP — Attacker in Smoke",
+      "images": ["attacker-2d", "attacker-baldr-pro", "attacker-gtl-21", "attacker-klesch-2p", "attacker-klesch-2u", "attacker-las-tac-2", "attacker-m600u", "attacker-mawl-c1", "attacker-wf501b", "attacker-wmx200", "attacker-x400", "attacker-xc1", "attacker-xhp35"],
+      "defaultA": "attacker-las-tac-2",
+      "defaultB": "attacker-klesch-2u"
+    },
+    "both-in-smoke": {
+      "title": "PvP — Both in Smoke",
+      "images": ["both-2d", "both-baldr-pro", "both-gtl-21", "both-klesch-2p", "both-klesch-2u", "both-las-tac-2", "both-m600u", "both-mawl-c1", "both-wf501b", "both-wmx200", "both-x400", "both-xc1", "both-xhp35"],
+      "defaultA": "both-las-tac-2",
+      "defaultB": "both-klesch-2u"
+    },
+    "me-in-smoke": {
+      "title": "PvP — Me in Smoke",
+      "images": ["me-2d", "me-baldr-pro", "me-gtl-21", "me-klesch-2p", "me-klesch-2u", "me-las-tac-2", "me-m600u", "me-mawl-c1", "me-wf501b", "me-wmx200", "me-x400", "me-xc1", "me-xhp35"],
+      "defaultA": "me-las-tac-2",
+      "defaultB": "me-klesch-2u"
+    }
+  }
+}
