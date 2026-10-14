@@ -1,0 +1,112 @@
+{
+  "title": "Overall Visibility",
+  "images": [
+    {
+      "id": "lighthouse-chalets-400",
+      "label": "400",
+      "group": "Lighthouse — Chalets",
+      "src": "../../screens/settings/visibility/lighthouse/chalets/400.png"
+    },
+    {
+      "id": "lighthouse-chalets-3000",
+      "label": "3000",
+      "group": "Lighthouse — Chalets",
+      "src": "../../screens/settings/visibility/lighthouse/chalets/3000.png"
+    },
+    {
+      "id": "reserve-radar-400",
+      "label": "400",
+      "group": "Reserve — Radar",
+      "src": "../../screens/settings/visibility/reserve/radar/400.png"
+    },
+    {
+      "id": "reserve-radar-3000",
+      "label": "3000",
+      "group": "Reserve — Radar",
+      "src": "../../screens/settings/visibility/reserve/radar/3000.png"
+    },
+    {
+      "id": "woods-1-400",
+      "label": "400",
+      "group": "Woods — Scene 1",
+      "src": "../../screens/settings/visibility/woods/scene-1/400.png"
+    },
+    {
+      "id": "woods-1-3000",
+      "label": "3000",
+      "group": "Woods — Scene 1",
+      "src": "../../screens/settings/visibility/woods/scene-1/3000.png"
+    },
+    {
+      "id": "woods-2-400",
+      "label": "400",
+      "group": "Woods — Scene 2",
+      "src": "../../screens/settings/visibility/woods/scene-2/400.png"
+    },
+    {
+      "id": "woods-2-3000",
+      "label": "3000",
+      "group": "Woods — Scene 2",
+      "src": "../../screens/settings/visibility/woods/scene-2/3000.png"
+    },
+    {
+      "id": "woods-3-400",
+      "label": "400",
+      "group": "Woods — Scene 3",
+      "src": "../../screens/settings/visibility/woods/scene-3/400.png"
+    },
+    {
+      "id": "woods-3-3000",
+      "label": "3000",
+      "group": "Woods — Scene 3",
+      "src": "../../screens/settings/visibility/woods/scene-3/3000.png"
+    }
+  ],
+  "views": {
+    "lighthouse-chalets": {
+      "title": "Overall Visibility — Lighthouse — Chalets",
+      "images": [
+        "lighthouse-chalets-400",
+        "lighthouse-chalets-3000"
+      ],
+      "defaultA": "lighthouse-chalets-400",
+      "defaultB": "lighthouse-chalets-3000"
+    },
+    "reserve-radar": {
+      "title": "Overall Visibility — Reserve — Radar",
+      "images": [
+        "reserve-radar-400",
+        "reserve-radar-3000"
+      ],
+      "defaultA": "reserve-radar-400",
+      "defaultB": "reserve-radar-3000"
+    },
+    "woods-1": {
+      "title": "Overall Visibility — Woods — Scene 1",
+      "images": [
+        "woods-1-400",
+        "woods-1-3000"
+      ],
+      "defaultA": "woods-1-400",
+      "defaultB": "woods-1-3000"
+    },
+    "woods-2": {
+      "title": "Overall Visibility — Woods — Scene 2",
+      "images": [
+        "woods-2-400",
+        "woods-2-3000"
+      ],
+      "defaultA": "woods-2-400",
+      "defaultB": "woods-2-3000"
+    },
+    "woods-3": {
+      "title": "Overall Visibility — Woods — Scene 3",
+      "images": [
+        "woods-3-400",
+        "woods-3-3000"
+      ],
+      "defaultA": "woods-3-400",
+      "defaultB": "woods-3-3000"
+    }
+  }
+}

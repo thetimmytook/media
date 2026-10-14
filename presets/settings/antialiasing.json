@@ -1,0 +1,28 @@
+{
+  "title": "Antialiasing",
+  "images": [
+    {
+      "id": "reserve-off",
+      "label": "Off",
+      "group": "Reserve",
+      "src": "../../screens/settings/antialiasing/reserve/off.mp4"
+    },
+    {
+      "id": "reserve-taa-high",
+      "label": "TAA High",
+      "group": "Reserve",
+      "src": "../../screens/settings/antialiasing/reserve/taa-high.mp4"
+    }
+  ],
+  "views": {
+    "reserve": {
+      "title": "Antialiasing — Reserve",
+      "images": [
+        "reserve-off",
+        "reserve-taa-high"
+      ],
+      "defaultA": "reserve-off",
+      "defaultB": "reserve-taa-high"
+    }
+  }
+}

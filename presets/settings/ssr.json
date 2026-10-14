@@ -1,0 +1,28 @@
+{
+  "title": "Screen Space Reflections",
+  "images": [
+    {
+      "id": "streets-off",
+      "label": "Off",
+      "group": "Streets of Tarkov",
+      "src": "../../screens/settings/ssr/streets/off.png"
+    },
+    {
+      "id": "streets-ultra",
+      "label": "Ultra",
+      "group": "Streets of Tarkov",
+      "src": "../../screens/settings/ssr/streets/ultra.png"
+    }
+  ],
+  "views": {
+    "streets": {
+      "title": "Screen Space Reflections — Streets of Tarkov",
+      "images": [
+        "streets-off",
+        "streets-ultra"
+      ],
+      "defaultA": "streets-off",
+      "defaultB": "streets-ultra"
+    }
+  }
+}

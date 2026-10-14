@@ -1,0 +1,28 @@
+{
+  "title": "Shadow Quality",
+  "images": [
+    {
+      "id": "customs-low",
+      "label": "Low",
+      "group": "Customs",
+      "src": "../../screens/settings/shadows/customs/low.png"
+    },
+    {
+      "id": "customs-ultra",
+      "label": "Ultra",
+      "group": "Customs",
+      "src": "../../screens/settings/shadows/customs/ultra.png"
+    }
+  ],
+  "views": {
+    "customs": {
+      "title": "Shadow Quality — Customs",
+      "images": [
+        "customs-low",
+        "customs-ultra"
+      ],
+      "defaultA": "customs-low",
+      "defaultB": "customs-ultra"
+    }
+  }
+}
