@@ -1,0 +1,28 @@
+{
+  "title": "Anisotropic Filtering",
+  "images": [
+    {
+      "id": "factory-off",
+      "label": "Off",
+      "group": "Factory",
+      "src": "../../screens/settings/anisotropic/factory/off.png"
+    },
+    {
+      "id": "factory-on",
+      "label": "On",
+      "group": "Factory",
+      "src": "../../screens/settings/anisotropic/factory/on.png"
+    }
+  ],
+  "views": {
+    "factory": {
+      "title": "Anisotropic Filtering — Factory",
+      "images": [
+        "factory-off",
+        "factory-on"
+      ],
+      "defaultA": "factory-off",
+      "defaultB": "factory-on"
+    }
+  }
+}

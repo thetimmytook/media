@@ -1,0 +1,35 @@
+{
+  "title": "Sharpness",
+  "images": [
+    {
+      "id": "factory-0",
+      "label": "0",
+      "group": "Factory",
+      "src": "../../screens/settings/sharpness/factory/0.png"
+    },
+    {
+      "id": "factory-0.6",
+      "label": "0.6",
+      "group": "Factory",
+      "src": "../../screens/settings/sharpness/factory/0.6.png"
+    },
+    {
+      "id": "factory-3.0",
+      "label": "3.0",
+      "group": "Factory",
+      "src": "../../screens/settings/sharpness/factory/3.0.png"
+    }
+  ],
+  "views": {
+    "factory": {
+      "title": "Sharpness — Factory",
+      "images": [
+        "factory-0",
+        "factory-0.6",
+        "factory-3.0"
+      ],
+      "defaultA": "factory-0",
+      "defaultB": "factory-3.0"
+    }
+  }
+}

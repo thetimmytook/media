@@ -1,0 +1,49 @@
+{
+  "title": "LOD",
+  "images": [
+    {
+      "id": "customs-lod-2",
+      "label": "LOD 2",
+      "group": "Customs",
+      "src": "../../screens/settings/lod/customs/lod-2.mp4"
+    },
+    {
+      "id": "customs-lod-4",
+      "label": "LOD 4",
+      "group": "Customs",
+      "src": "../../screens/settings/lod/customs/lod-4.mp4"
+    },
+    {
+      "id": "streets-lod-2",
+      "label": "LOD 2",
+      "group": "Streets of Tarkov",
+      "src": "../../screens/settings/lod/streets/lod-2.mp4"
+    },
+    {
+      "id": "streets-lod-4",
+      "label": "LOD 4",
+      "group": "Streets of Tarkov",
+      "src": "../../screens/settings/lod/streets/lod-4.mp4"
+    }
+  ],
+  "views": {
+    "customs": {
+      "title": "LOD — Customs",
+      "images": [
+        "customs-lod-2",
+        "customs-lod-4"
+      ],
+      "defaultA": "customs-lod-2",
+      "defaultB": "customs-lod-4"
+    },
+    "streets": {
+      "title": "LOD — Streets of Tarkov",
+      "images": [
+        "streets-lod-2",
+        "streets-lod-4"
+      ],
+      "defaultA": "streets-lod-2",
+      "defaultB": "streets-lod-4"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Resampling",
+  "images": [
+    {
+      "id": "woods-0.5x",
+      "label": "0.5x",
+      "group": "Woods",
+      "src": "../../screens/settings/resampling/woods/0.5x.png"
+    },
+    {
+      "id": "woods-1x",
+      "label": "1x",
+      "group": "Woods",
+      "src": "../../screens/settings/resampling/woods/1x.png"
+    },
+    {
+      "id": "woods-4x",
+      "label": "4x",
+      "group": "Woods",
+      "src": "../../screens/settings/resampling/woods/4x.png"
+    }
+  ],
+  "views": {
+    "woods": {
+      "title": "Resampling — Woods",
+      "images": [
+        "woods-0.5x",
+        "woods-1x",
+        "woods-4x"
+      ],
+      "defaultA": "woods-1x",
+      "defaultB": "woods-4x"
+    }
+  }
+}

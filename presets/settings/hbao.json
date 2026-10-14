@@ -1,0 +1,77 @@
+{
+  "title": "HBAO",
+  "images": [
+    {
+      "id": "factory-3-off",
+      "label": "Off",
+      "group": "Factory — Scene 3",
+      "src": "../../screens/settings/hbao/factory/scene-3/off.png"
+    },
+    {
+      "id": "factory-3-max-performance",
+      "label": "Max Performance",
+      "group": "Factory — Scene 3",
+      "src": "../../screens/settings/hbao/factory/scene-3/max-performance.png"
+    },
+    {
+      "id": "factory-3-ultra-colored",
+      "label": "Colored Ultra",
+      "group": "Factory — Scene 3",
+      "src": "../../screens/settings/hbao/factory/scene-3/ultra-colored.png"
+    },
+    {
+      "id": "factory-1-off",
+      "label": "Off",
+      "group": "Factory — Scene 1",
+      "src": "../../screens/settings/hbao/factory/scene-1/off.png"
+    },
+    {
+      "id": "factory-1-ultra-colored",
+      "label": "Colored Ultra",
+      "group": "Factory — Scene 1",
+      "src": "../../screens/settings/hbao/factory/scene-1/ultra-colored.png"
+    },
+    {
+      "id": "factory-2-off",
+      "label": "Off",
+      "group": "Factory — Scene 2",
+      "src": "../../screens/settings/hbao/factory/scene-2/off.png"
+    },
+    {
+      "id": "factory-2-ultra-colored",
+      "label": "Colored Ultra",
+      "group": "Factory — Scene 2",
+      "src": "../../screens/settings/hbao/factory/scene-2/ultra-colored.png"
+    }
+  ],
+  "views": {
+    "factory-3": {
+      "title": "HBAO — Factory — Scene 3",
+      "images": [
+        "factory-3-off",
+        "factory-3-max-performance",
+        "factory-3-ultra-colored"
+      ],
+      "defaultA": "factory-3-off",
+      "defaultB": "factory-3-ultra-colored"
+    },
+    "factory-1": {
+      "title": "HBAO — Factory — Scene 1",
+      "images": [
+        "factory-1-off",
+        "factory-1-ultra-colored"
+      ],
+      "defaultA": "factory-1-off",
+      "defaultB": "factory-1-ultra-colored"
+    },
+    "factory-2": {
+      "title": "HBAO — Factory — Scene 2",
+      "images": [
+        "factory-2-off",
+        "factory-2-ultra-colored"
+      ],
+      "defaultA": "factory-2-off",
+      "defaultB": "factory-2-ultra-colored"
+    }
+  }
+}
