@@ -10,3 +10,9 @@
 - Merge pull requests with a merge commit. Do not squash or rebase PRs.
 - Keep commit messages and PR descriptions focused on the change summary. Do not add generic verification sections or command lists unless requested or a material test limitation needs explanation.
 - Do not inspect or poll remote CI or deployment status after a push or merge unless explicitly requested. Provide the run or PR link without querying its status.
+
+# Comparison layout defaults
+
+- Use Curtain for static-image comparisons and their local or published links by default.
+- Use Side by side for static images only when the user explicitly requests that layout. Do not add `mode=side-by-side` to image comparison links automatically.
+- Keep README examples and review links consistent with these layout defaults.
