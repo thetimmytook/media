@@ -16,6 +16,19 @@
     "smoke-ir": { pres: "./presets/smoke.json", view: "ir" },
   };
 
+  const videoExtensions = new Set([".m4v", ".mov", ".mp4", ".ogv", ".ogg", ".webm"]);
+
+  function getMediaType(rawUrl) {
+    try {
+      const pathname = new URL(rawUrl, window.location.href).pathname.toLowerCase();
+      const extensionStart = pathname.lastIndexOf(".");
+      const extension = extensionStart >= 0 ? pathname.slice(extensionStart) : "";
+      return videoExtensions.has(extension) ? "video" : "image";
+    } catch {
+      return "image";
+    }
+  }
+
   function showUsage(title, message, example) {
     usageTitle.textContent = title;
     usageMessage.textContent = message;
@@ -28,13 +41,15 @@
     for (let index = 1; index <= 4; index += 1) {
       const url = params.get(`img${index}`)?.trim();
       if (!url) continue;
+      const type = getMediaType(url);
       items.push({
         id: `image-${index}`,
         url,
-        label: params.get(`label${index}`)?.trim() || `Image ${index}`,
+        label: params.get(`label${index}`)?.trim() || `${type === "video" ? "Video" : "Image"} ${index}`,
+        type,
       });
     }
-    return { items, title: "Image Comparison", selectedA: 0, selectedB: 1 };
+    return { items, title: "Media Comparison", selectedA: 0, selectedB: 1 };
   }
 
   function requireString(value, name) {
@@ -88,6 +103,7 @@
         label: typeof image.label === "string" && image.label.trim() ? image.label.trim() : id,
         group: typeof image.group === "string" && image.group.trim() ? image.group.trim() : null,
         url: sourceUrl.href,
+        type: getMediaType(sourceUrl.href),
       };
     });
 
@@ -117,7 +133,7 @@
       selectedB,
       title: (typeof view?.title === "string" && view.title.trim())
         || (typeof config.title === "string" && config.title.trim())
-        || "Image Comparison",
+        || "Media Comparison",
     };
   }
 
@@ -149,9 +165,17 @@
     const { items } = comparison;
     if (items.length < 2) {
       showUsage(
-        "Two image URLs are required.",
-        "Pass two to four public image URLs, or load a JSON preset.",
+        "Two media URLs are required.",
+        "Pass two to four public image URLs, exactly two public video URLs, or load a JSON preset.",
         "?img1=<url>&img2=<url>  or  ?pres=./presets/smoke.json",
+      );
+      return;
+    }
+    if (items.some((item) => item.type === "video") && items.length !== 2) {
+      showUsage(
+        "Two video URLs are required.",
+        "Video comparisons currently support exactly two items.",
+        "?img1=<video-url>&img2=<video-url>",
       );
       return;
     }
@@ -170,6 +194,8 @@
       planeB: document.querySelector("#plane-b"),
       imageA: document.querySelector("#image-a"),
       imageB: document.querySelector("#image-b"),
+      videoA: document.querySelector("#video-a"),
+      videoB: document.querySelector("#video-b"),
       clipB: document.querySelector("#clip-b"),
       labelA: document.querySelector("#label-a"),
       labelB: document.querySelector("#label-b"),
@@ -179,6 +205,15 @@
       loading: document.querySelector("#loading"),
       error: document.querySelector("#load-error"),
       warning: document.querySelector("#aspect-warning"),
+      viewMode: document.querySelector("#view-mode"),
+      curtainMode: document.querySelector("#curtain-mode"),
+      sideBySideMode: document.querySelector("#side-by-side-mode"),
+      videoControls: document.querySelector("#video-controls"),
+      videoShortcuts: document.querySelector("#video-shortcuts"),
+      play: document.querySelector("#play-button"),
+      progress: document.querySelector("#video-progress"),
+      videoTime: document.querySelector("#video-time"),
+      mute: document.querySelector("#mute-button"),
     };
 
     const state = {
@@ -194,11 +229,15 @@
       pinchGesture: null,
       dividerPointer: null,
       zoomHideTimer: null,
+      mode: params.get("mode") === "side-by-side" ? "side-by-side" : "curtain",
+      isSeeking: false,
+      playbackRequested: false,
     };
 
     const comparisonTitle = params.get("title")?.trim() || comparison.title;
     elements.title.textContent = comparisonTitle;
-    document.title = `${comparisonTitle} · Image Compare`;
+    document.title = `${comparisonTitle} · Media Compare`;
+    elements.viewMode.hidden = false;
 
     function populateSelects() {
       const groupsA = new Map();
@@ -238,10 +277,57 @@
       }
     }
 
+    function getActiveMedia(side) {
+      const item = items[side === "A" ? state.selectedA : state.selectedB];
+      if (item.type === "video") return side === "A" ? elements.videoA : elements.videoB;
+      return side === "A" ? elements.imageA : elements.imageB;
+    }
+
+    function getPanLimits(media, viewportWidth, viewportHeight) {
+      const dimensions = getMediaDimensions(media);
+      if (!dimensions.width || !dimensions.height || !viewportWidth || !viewportHeight) {
+        return { x: 0, y: 0 };
+      }
+
+      const fitScale = Math.min(
+        viewportWidth / dimensions.width,
+        viewportHeight / dimensions.height,
+      );
+      return {
+        x: Math.max(0, (dimensions.width * fitScale * state.zoom - viewportWidth) / 2),
+        y: Math.max(0, (dimensions.height * fitScale * state.zoom - viewportHeight) / 2),
+      };
+    }
+
+    function clampPan() {
+      const viewportWidth = elements.stage.clientWidth / (state.mode === "side-by-side" ? 2 : 1);
+      const viewportHeight = elements.stage.clientHeight;
+      const limits = [
+        getPanLimits(getActiveMedia("A"), viewportWidth, viewportHeight),
+        getPanLimits(getActiveMedia("B"), viewportWidth, viewportHeight),
+      ];
+      const limitX = Math.min(...limits.map((limit) => limit.x));
+      const limitY = Math.min(...limits.map((limit) => limit.y));
+      state.panX = Math.min(limitX, Math.max(-limitX, state.panX));
+      state.panY = Math.min(limitY, Math.max(-limitY, state.panY));
+    }
+
     function setTransforms() {
+      clampPan();
       const transform = `translate(${state.panX}px, ${state.panY}px) scale(${state.zoom})`;
       elements.planeA.style.transform = transform;
       elements.planeB.style.transform = transform;
+    }
+
+    function setMode(mode) {
+      state.mode = mode;
+      const isSideBySide = mode === "side-by-side";
+      elements.stage.classList.toggle("is-side-by-side", isSideBySide);
+      elements.curtainMode.classList.toggle("is-active", !isSideBySide);
+      elements.sideBySideMode.classList.toggle("is-active", isSideBySide);
+      elements.curtainMode.setAttribute("aria-pressed", String(!isSideBySide));
+      elements.sideBySideMode.setAttribute("aria-pressed", String(isSideBySide));
+      setTransforms();
     }
 
     function showZoomIndicator() {
@@ -269,51 +355,213 @@
       setTransforms();
     }
 
-    function validateAspectRatio() {
-      const ratioA = elements.imageA.naturalWidth / elements.imageA.naturalHeight;
-      const ratioB = elements.imageB.naturalWidth / elements.imageB.naturalHeight;
-      const difference = Math.abs(ratioA - ratioB) / Math.max(ratioA, ratioB);
-      elements.warning.hidden = difference < 0.005;
+    function getMediaDimensions(media) {
+      if (media instanceof HTMLVideoElement) {
+        return { width: media.videoWidth, height: media.videoHeight };
+      }
+      return { width: media.naturalWidth, height: media.naturalHeight };
     }
 
-    function waitForImage(image, item, generation) {
+    function validateAspectRatio(mediaA, mediaB) {
+      const dimensionsA = getMediaDimensions(mediaA);
+      const dimensionsB = getMediaDimensions(mediaB);
+      const ratioA = dimensionsA.width / dimensionsA.height;
+      const ratioB = dimensionsB.width / dimensionsB.height;
+      const difference = Math.abs(ratioA - ratioB) / Math.max(ratioA, ratioB);
+      elements.warning.textContent = "Media have different aspect ratios";
+      elements.warning.hidden = !Number.isFinite(difference) || difference < 0.005;
+    }
+
+    function clearMediaElement(media) {
+      if (media instanceof HTMLVideoElement) media.pause();
+      media.removeAttribute("src");
+      if (media instanceof HTMLVideoElement) media.load();
+      media.hidden = true;
+    }
+
+    function prepareMedia(side, item) {
+      const image = side === "A" ? elements.imageA : elements.imageB;
+      const video = side === "A" ? elements.videoA : elements.videoB;
+      const active = item.type === "video" ? video : image;
+      const inactive = item.type === "video" ? image : video;
+
+      clearMediaElement(inactive);
+      active.hidden = false;
+      if (active instanceof HTMLImageElement) {
+        active.alt = item.label;
+      } else {
+        active.setAttribute("aria-label", item.label);
+        active.muted = side === "B" || elements.mute.getAttribute("aria-pressed") === "true";
+      }
+      return active;
+    }
+
+    function waitForMedia(media, item, generation) {
       return new Promise((resolve, reject) => {
+        const loadEvent = media instanceof HTMLVideoElement ? "loadedmetadata" : "load";
         const onLoad = () => { cleanup(); resolve(); };
         const onError = () => {
           cleanup();
-          if (generation === state.generation) reject(new Error(`Failed to load ${item.label}`));
+          if (generation === state.generation) {
+            reject(new Error(`Failed to load ${item.label}`));
+          }
           else resolve();
         };
         const cleanup = () => {
-          image.removeEventListener("load", onLoad);
-          image.removeEventListener("error", onError);
+          media.removeEventListener(loadEvent, onLoad);
+          media.removeEventListener("error", onError);
         };
-        image.addEventListener("load", onLoad, { once: true });
-        image.addEventListener("error", onError, { once: true });
-        image.alt = item.label;
-        image.src = item.url;
-        if (image.complete) {
+        media.addEventListener(loadEvent, onLoad, { once: true });
+        media.addEventListener("error", onError, { once: true });
+        media.src = item.url;
+        if (media instanceof HTMLVideoElement) media.load();
+
+        const isReady = media instanceof HTMLVideoElement
+          ? media.readyState >= HTMLMediaElement.HAVE_METADATA
+          : media.complete;
+        if (isReady) {
           queueMicrotask(() => {
-            if (image.naturalWidth > 0) onLoad();
+            const dimensions = getMediaDimensions(media);
+            if (dimensions.width > 0) onLoad();
             else onError();
           });
         }
       });
     }
 
+    function getSelectedVideos() {
+      const itemA = items[state.selectedA];
+      const itemB = items[state.selectedB];
+      if (itemA.type !== "video" || itemB.type !== "video") return [];
+      return [elements.videoA, elements.videoB];
+    }
+
+    function getVideoDuration() {
+      const durations = getSelectedVideos()
+        .map((video) => video.duration)
+        .filter((duration) => Number.isFinite(duration) && duration > 0);
+      return durations.length === 2 ? Math.min(...durations) : 0;
+    }
+
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+      const wholeSeconds = Math.floor(seconds);
+      const minutes = Math.floor(wholeSeconds / 60);
+      const remainder = String(wholeSeconds % 60).padStart(2, "0");
+      return `${minutes}:${remainder}`;
+    }
+
+    function updateVideoProgress() {
+      const [videoA] = getSelectedVideos();
+      const duration = getVideoDuration();
+      const currentTime = Math.min(videoA?.currentTime || 0, duration || 0);
+      elements.progress.max = String(duration);
+      if (!state.isSeeking) elements.progress.value = String(currentTime);
+      elements.videoTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+    }
+
+    function updatePlaybackButton() {
+      const [videoA] = getSelectedVideos();
+      elements.play.textContent = videoA && !videoA.paused && !videoA.ended ? "Pause" : "Play";
+    }
+
+    function pauseVideos() {
+      state.playbackRequested = false;
+      elements.videoA.pause();
+      elements.videoB.pause();
+      updatePlaybackButton();
+    }
+
+    function configureVideoControls(itemA, itemB) {
+      const isVideoPair = itemA.type === "video" && itemB.type === "video";
+      elements.videoControls.hidden = !isVideoPair;
+      elements.videoShortcuts.hidden = !isVideoPair;
+      if (!isVideoPair) return;
+
+      elements.videoA.muted = true;
+      elements.videoB.muted = true;
+      elements.mute.setAttribute("aria-pressed", String(elements.videoA.muted));
+      elements.mute.textContent = elements.videoA.muted ? "Unmute" : "Mute";
+      updateVideoProgress();
+      updatePlaybackButton();
+      void playVideos();
+    }
+
+    async function playVideos() {
+      const videos = getSelectedVideos();
+      if (videos.length !== 2) return;
+      const [videoA, videoB] = videos;
+      state.playbackRequested = true;
+      const duration = getVideoDuration();
+      if (videoA.ended || (duration && videoA.currentTime >= duration)) videoA.currentTime = 0;
+      videoB.currentTime = videoA.currentTime;
+      videoB.muted = true;
+      await Promise.allSettled([videoA.play(), videoB.play()]);
+      updatePlaybackButton();
+    }
+
+    async function togglePlayback() {
+      const [videoA] = getSelectedVideos();
+      if (!videoA) return;
+      if (!videoA.paused && !videoA.ended) {
+        pauseVideos();
+        return;
+      }
+      await playVideos();
+    }
+
+    function restartVideos() {
+      const videos = getSelectedVideos();
+      if (videos.length !== 2 || !state.playbackRequested) return;
+      for (const video of videos) video.currentTime = 0;
+      void playVideos();
+    }
+
+    function seekVideos(nextTime) {
+      const duration = getVideoDuration();
+      if (!duration) return;
+      const position = Math.max(0, Math.min(duration, nextTime));
+      for (const video of getSelectedVideos()) video.currentTime = position;
+      updateVideoProgress();
+    }
+
+    function toggleMute() {
+      elements.videoA.muted = !elements.videoA.muted;
+      elements.mute.setAttribute("aria-pressed", String(elements.videoA.muted));
+      elements.mute.textContent = elements.videoA.muted ? "Unmute" : "Mute";
+    }
+
+    async function toggleFullscreen() {
+      if (!document.fullscreenElement) await elements.viewer.requestFullscreen?.();
+      else await document.exitFullscreen?.();
+    }
+
     async function loadSelection({ reset = true } = {}) {
       const itemA = items[state.selectedA];
       const itemB = items[state.selectedB];
       const generation = ++state.generation;
+      pauseVideos();
       elements.labelA.textContent = itemA.label;
       elements.labelB.textContent = itemB.label;
       elements.loading.hidden = false;
       elements.error.hidden = true;
       elements.warning.hidden = true;
+      elements.videoControls.hidden = true;
+      elements.videoShortcuts.hidden = true;
       if (reset) resetView();
+
+      if (itemA.type !== itemB.type) {
+        elements.loading.hidden = true;
+        elements.error.textContent = "Select two images or two videos.";
+        elements.error.hidden = false;
+        return;
+      }
+
+      const mediaA = prepareMedia("A", itemA);
+      const mediaB = prepareMedia("B", itemB);
       const results = await Promise.allSettled([
-        waitForImage(elements.imageA, itemA, generation),
-        waitForImage(elements.imageB, itemB, generation),
+        waitForMedia(mediaA, itemA, generation),
+        waitForMedia(mediaB, itemB, generation),
       ]);
       if (generation !== state.generation) return;
       const failures = results
@@ -325,7 +573,8 @@
         elements.error.hidden = false;
         return;
       }
-      validateAspectRatio();
+      configureVideoControls(itemA, itemB);
+      validateAspectRatio(mediaA, mediaB);
     }
 
     function changeSelection(side, nextIndex) {
@@ -354,13 +603,52 @@
       updateDisabledOptions();
       loadSelection({ reset: false });
     });
-    elements.fullscreen.addEventListener("click", async () => {
-      if (!document.fullscreenElement) await elements.viewer.requestFullscreen?.();
-      else await document.exitFullscreen?.();
-    });
+    elements.fullscreen.addEventListener("click", toggleFullscreen);
     document.addEventListener("fullscreenchange", () => {
       elements.fullscreen.textContent = document.fullscreenElement ? "Exit fullscreen" : "Fullscreen";
+      setTransforms();
     });
+    window.addEventListener("resize", setTransforms);
+    elements.curtainMode.addEventListener("click", () => setMode("curtain"));
+    elements.sideBySideMode.addEventListener("click", () => setMode("side-by-side"));
+
+    elements.play.addEventListener("click", togglePlayback);
+    elements.progress.addEventListener("input", () => {
+      state.isSeeking = true;
+      const nextTime = Number(elements.progress.value);
+      seekVideos(nextTime);
+    });
+    elements.progress.addEventListener("change", () => {
+      state.isSeeking = false;
+      updateVideoProgress();
+    });
+    elements.mute.addEventListener("click", toggleMute);
+
+    elements.videoA.addEventListener("timeupdate", () => {
+      const [, videoB] = getSelectedVideos();
+      const duration = getVideoDuration();
+      if (duration && elements.videoA.currentTime >= duration) {
+        restartVideos();
+        updateVideoProgress();
+        return;
+      }
+      if (videoB && Math.abs(videoB.currentTime - elements.videoA.currentTime) > 0.12) {
+        videoB.currentTime = elements.videoA.currentTime;
+      }
+      updateVideoProgress();
+    });
+    elements.videoA.addEventListener("play", () => {
+      const [, videoB] = getSelectedVideos();
+      if (videoB?.paused) void videoB.play();
+      updatePlaybackButton();
+    });
+    elements.videoA.addEventListener("pause", () => {
+      const [, videoB] = getSelectedVideos();
+      videoB?.pause();
+      updatePlaybackButton();
+    });
+    elements.videoA.addEventListener("ended", restartVideos);
+    elements.videoA.addEventListener("durationchange", updateVideoProgress);
 
     elements.divider.addEventListener("pointerdown", (event) => {
       event.preventDefault();
@@ -485,16 +773,52 @@
     elements.stage.addEventListener("dblclick", resetView);
 
     document.addEventListener("keydown", (event) => {
-      const tagName = document.activeElement?.tagName;
-      if (["INPUT", "TEXTAREA"].includes(tagName)) return;
+      if (event.defaultPrevented || event.ctrlKey || event.altKey || event.metaKey) return;
+      const target = event.target;
+      if (target instanceof Element && (
+        target.isContentEditable
+        || target.closest("input, textarea, select, button, a[href], [role='slider']")
+      )) return;
+
       if (event.code === "KeyR" || event.key.toLowerCase() === "r") {
         event.preventDefault();
         resetView();
         setDivider(50);
+        return;
+      }
+
+      if (event.code === "KeyF") {
+        event.preventDefault();
+        if (!event.repeat) void toggleFullscreen();
+        return;
+      }
+
+      const [videoA] = getSelectedVideos();
+      if (!videoA || elements.videoControls.hidden) return;
+      switch (event.code) {
+        case "Space":
+        case "KeyK":
+          event.preventDefault();
+          if (!event.repeat) void togglePlayback();
+          break;
+        case "ArrowLeft":
+        case "ArrowRight":
+        case "KeyJ":
+        case "KeyL": {
+          event.preventDefault();
+          const offset = { ArrowLeft: -5, ArrowRight: 5, KeyJ: -10, KeyL: 10 }[event.code];
+          seekVideos(videoA.currentTime + offset);
+          break;
+        }
+        case "KeyM":
+          event.preventDefault();
+          if (!event.repeat) toggleMute();
+          break;
       }
     });
 
     populateSelects();
+    setMode(state.mode);
     setDivider(50);
     setTransforms();
     loadSelection();
