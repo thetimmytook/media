@@ -1,0 +1,25 @@
+{
+  "title": "DLSS",
+  "images": [
+    {
+      "id": "factory-off",
+      "label": "Off",
+      "group": "Factory",
+      "src": "../../screens/settings/dlss/factory/off.mp4"
+    },
+    {
+      "id": "factory-on",
+      "label": "On",
+      "group": "Factory",
+      "src": "../../screens/settings/dlss/factory/on.mp4"
+    }
+  ],
+  "views": {
+    "factory": {
+      "title": "DLSS — Factory",
+      "images": ["factory-off", "factory-on"],
+      "defaultA": "factory-off",
+      "defaultB": "factory-on"
+    }
+  }
+}

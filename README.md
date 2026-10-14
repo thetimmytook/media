@@ -180,6 +180,7 @@ Select a map or scene with `view`. Each view contains only values captured at th
 | --- | --- | --- | --- |
 | [Anisotropic Filtering](./presets/settings/anisotropic.json) | Factory (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/anisotropic.json&view=factory) |
 | [Antialiasing](./presets/settings/antialiasing.json) | Reserve (`reserve`) | Off, TAA High | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/antialiasing.json&view=reserve) |
+| [DLSS](./presets/settings/dlss.json) | Factory (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/dlss.json&view=factory) |
 | [HBAO](./presets/settings/hbao.json) | Factory — Scene 3 (`factory-3`) | Off, Max Performance, Colored Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/hbao.json&view=factory-3) |
 |  | Factory — Scene 1 (`factory-1`) | Off, Colored Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/hbao.json&view=factory-1) |
 |  | Factory — Scene 2 (`factory-2`) | Off, Colored Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/hbao.json&view=factory-2) |
@@ -195,7 +196,7 @@ Select a map or scene with `view`. Each view contains only values captured at th
 |  | Woods — Scene 2 (`woods-2`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=woods-2) |
 |  | Woods — Scene 3 (`woods-3`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=woods-3) |
 
-Antialiasing and LOD use the finalized H.264 MP4 exports; the remaining settings use PNG screenshots. The earlier two-video smoke test has been replaced by these graphics presets. Every video view contains exactly two videos.
+Antialiasing, DLSS, and LOD use the finalized H.264 MP4 exports; the remaining settings use PNG screenshots. The earlier two-video smoke test has been replaced by these graphics presets. Every video view contains exactly two videos.
 
 ## Included smoke preset
 
