@@ -1,0 +1,91 @@
+{
+  "title": "Field of View",
+  "images": [
+    {
+      "id": "factory-50",
+      "label": "FOV 50",
+      "group": "Factory",
+      "src": "../../screens/settings/fov/factory/50.png"
+    },
+    {
+      "id": "factory-65",
+      "label": "FOV 65",
+      "group": "Factory",
+      "src": "../../screens/settings/fov/factory/65.png"
+    },
+    {
+      "id": "factory-75",
+      "label": "FOV 75",
+      "group": "Factory",
+      "src": "../../screens/settings/fov/factory/75.png"
+    },
+    {
+      "id": "customs-50",
+      "label": "FOV 50",
+      "group": "Customs",
+      "src": "../../screens/settings/fov/customs/normal/50.png"
+    },
+    {
+      "id": "customs-65",
+      "label": "FOV 65",
+      "group": "Customs",
+      "src": "../../screens/settings/fov/customs/normal/65.png"
+    },
+    {
+      "id": "customs-75",
+      "label": "FOV 75",
+      "group": "Customs",
+      "src": "../../screens/settings/fov/customs/normal/75.png"
+    },
+    {
+      "id": "customs-zoom-50",
+      "label": "FOV 50",
+      "group": "Customs — Scoped",
+      "src": "../../screens/settings/fov/customs/scoped/50.png"
+    },
+    {
+      "id": "customs-zoom-65",
+      "label": "FOV 65",
+      "group": "Customs — Scoped",
+      "src": "../../screens/settings/fov/customs/scoped/65.png"
+    },
+    {
+      "id": "customs-zoom-75",
+      "label": "FOV 75",
+      "group": "Customs — Scoped",
+      "src": "../../screens/settings/fov/customs/scoped/75.png"
+    }
+  ],
+  "views": {
+    "factory": {
+      "title": "Field of View — Factory",
+      "images": [
+        "factory-50",
+        "factory-65",
+        "factory-75"
+      ],
+      "defaultA": "factory-50",
+      "defaultB": "factory-75"
+    },
+    "customs": {
+      "title": "Field of View — Customs",
+      "images": [
+        "customs-50",
+        "customs-65",
+        "customs-75"
+      ],
+      "defaultA": "customs-50",
+      "defaultB": "customs-75"
+    },
+    "customs-zoom": {
+      "title": "Field of View — Customs — Scoped",
+      "images": [
+        "customs-zoom-50",
+        "customs-zoom-65",
+        "customs-zoom-75"
+      ],
+      "defaultA": "customs-zoom-50",
+      "defaultB": "customs-zoom-75"
+    }
+  }
+}
