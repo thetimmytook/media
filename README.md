@@ -181,6 +181,9 @@ Select a map or scene with `view`. Each view contains only values captured at th
 | [Anisotropic Filtering](./presets/settings/anisotropic.json) | Factory (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/anisotropic.json&view=factory) |
 | [Antialiasing](./presets/settings/antialiasing.json) | Reserve (`reserve`) | Off, TAA High | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/antialiasing.json&view=reserve) |
 | [DLSS](./presets/settings/dlss.json) | Factory (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/dlss.json&view=factory) |
+| [Field of View](./presets/settings/fov.json) | Factory (`factory`) | 50, 65, 75 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/fov.json&view=factory) |
+|  | Customs (`customs`) | 50, 65, 75 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/fov.json&view=customs) |
+|  | Customs — Scoped (`customs-zoom`) | 50, 65, 75 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/fov.json&view=customs-zoom) |
 | [HBAO](./presets/settings/hbao.json) | Factory — Scene 3 (`factory-3`) | Off, Max Performance, Colored Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/hbao.json&view=factory-3) |
 |  | Factory — Scene 1 (`factory-1`) | Off, Colored Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/hbao.json&view=factory-1) |
 |  | Factory — Scene 2 (`factory-2`) | Off, Colored Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/hbao.json&view=factory-2) |
