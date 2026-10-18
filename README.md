@@ -193,6 +193,7 @@ Select a map or scene with `view`. Each view contains only values captured at th
 | [Shadow Quality](./presets/settings/shadows.json) | Customs (`customs`) | Low, Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/shadows.json&view=customs) |
 | [Sharpness](./presets/settings/sharpness.json) | Factory (`factory`) | 0, 0.6, 3.0 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/sharpness.json&view=factory) |
 | [Screen Space Reflections](./presets/settings/ssr.json) | Streets of Tarkov (`streets`) | Off, Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/ssr.json&view=streets) |
+| [Texture Quality](./presets/settings/textures.json) | Factory (`factory`) | Low, Medium, High, Ultra | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/textures.json&view=factory) |
 | [Overall Visibility](./presets/settings/visibility.json) | Lighthouse — Chalets (`lighthouse-chalets`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=lighthouse-chalets) |
 |  | Reserve — Radar (`reserve-radar`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=reserve-radar) |
 |  | Woods — Scene 1 (`woods-1`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=woods-1) |
