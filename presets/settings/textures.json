@@ -1,0 +1,42 @@
+{
+  "title": "Texture Quality",
+  "images": [
+    {
+      "id": "factory-low",
+      "label": "Low",
+      "group": "Factory",
+      "src": "../../screens/settings/textures/factory/low.png"
+    },
+    {
+      "id": "factory-medium",
+      "label": "Medium",
+      "group": "Factory",
+      "src": "../../screens/settings/textures/factory/medium.png"
+    },
+    {
+      "id": "factory-high",
+      "label": "High",
+      "group": "Factory",
+      "src": "../../screens/settings/textures/factory/high.png"
+    },
+    {
+      "id": "factory-ultra",
+      "label": "Ultra",
+      "group": "Factory",
+      "src": "../../screens/settings/textures/factory/ultra.png"
+    }
+  ],
+  "views": {
+    "factory": {
+      "title": "Texture Quality — Factory",
+      "images": [
+        "factory-low",
+        "factory-medium",
+        "factory-high",
+        "factory-ultra"
+      ],
+      "defaultA": "factory-low",
+      "defaultB": "factory-ultra"
+    }
+  }
+}
