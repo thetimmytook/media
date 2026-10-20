@@ -180,7 +180,8 @@ Select a map or scene with `view`. Each view contains only values captured at th
 | --- | --- | --- | --- |
 | [Anisotropic Filtering](./presets/settings/anisotropic.json) | Factory (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/anisotropic.json&view=factory) |
 | [Antialiasing](./presets/settings/antialiasing.json) | Reserve (`reserve`) | Off, TAA High | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/antialiasing.json&view=reserve) |
-| [DLSS](./presets/settings/dlss.json) | Factory (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/dlss.json&view=factory) |
+| [DLSS](./presets/settings/dlss.json) | Factory — Video (`factory`) | Off, On | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/dlss.json&view=factory) |
+|  | Factory — Static, build 1.2.0.0.47965 (`factory-static`) | Off, Balanced, Performance | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/dlss.json&view=factory-static) |
 | [Field of View](./presets/settings/fov.json) | Factory (`factory`) | 50, 65, 75 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/fov.json&view=factory) |
 |  | Customs (`customs`) | 50, 65, 75 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/fov.json&view=customs) |
 |  | Customs — Scoped (`customs-zoom`) | 50, 65, 75 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/fov.json&view=customs-zoom) |
@@ -200,7 +201,22 @@ Select a map or scene with `view`. Each view contains only values captured at th
 |  | Woods — Scene 2 (`woods-2`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=woods-2) |
 |  | Woods — Scene 3 (`woods-3`) | 400, 3000 | [Curtain](https://thetimmytook.github.io/media/?pres=./presets/settings/visibility.json&view=woods-3) |
 
-Antialiasing, DLSS, and LOD use the finalized H.264 MP4 exports; the remaining settings use PNG screenshots. The earlier two-video smoke test has been replaced by these graphics presets. Every video view contains exactly two videos.
+Antialiasing and LOD use finalized H.264 MP4 exports. DLSS has separate video and static PNG views; the remaining settings use PNG screenshots. Every video view contains exactly two videos.
+
+## Graphics publication assets
+
+The optimization order and two mechanism illustrations are stored in `screens/settings/help/`. The three DLSS screenshots are stored with the DLSS media in `screens/settings/dlss/factory/` and were captured on Factory in build **1.2.0.0.47965**.
+
+| File | Publication caption |
+| --- | --- |
+| [manual-optimization-order.png](./screens/settings/help/manual-optimization-order.png) | Manual graphics optimization order. |
+| [upscaling-explainer.png](./screens/settings/help/upscaling-explainer.png) | Mechanism illustration: DLSS / FSR upscaling. |
+| [anisotropic-explainer.png](./screens/settings/help/anisotropic-explainer.png) | Mechanism illustration: anisotropic filtering. |
+| [dlss-factory-off.png](./screens/settings/dlss/factory/dlss-factory-off.png) | Factory — DLSS Off. Static capture, build 1.2.0.0.47965. |
+| [dlss-factory-balanced.png](./screens/settings/dlss/factory/dlss-factory-balanced.png) | Factory — DLSS Balanced. Static capture, build 1.2.0.0.47965. |
+| [dlss-factory-performance.png](./screens/settings/dlss/factory/dlss-factory-performance.png) | Factory — DLSS Performance. Static capture, build 1.2.0.0.47965. |
+
+Open the static DLSS comparison with `?pres=./presets/settings/dlss.json&view=factory-static`. It uses Curtain mode with Off vs Balanced selected by default; Performance is available in either selector. The existing `view=factory` link continues to open the video comparison.
 
 ## Included smoke preset
 
