@@ -12,6 +12,24 @@
       "label": "On",
       "group": "Factory",
       "src": "../../screens/settings/dlss/factory/on.mp4"
+    },
+    {
+      "id": "factory-static-off",
+      "label": "Off",
+      "group": "Factory — Build 1.2.0.0.47965",
+      "src": "../../screens/settings/dlss/factory/dlss-factory-off.png"
+    },
+    {
+      "id": "factory-static-balanced",
+      "label": "Balanced",
+      "group": "Factory — Build 1.2.0.0.47965",
+      "src": "../../screens/settings/dlss/factory/dlss-factory-balanced.png"
+    },
+    {
+      "id": "factory-static-performance",
+      "label": "Performance",
+      "group": "Factory — Build 1.2.0.0.47965",
+      "src": "../../screens/settings/dlss/factory/dlss-factory-performance.png"
     }
   ],
   "views": {
@@ -20,6 +38,12 @@
       "images": ["factory-off", "factory-on"],
       "defaultA": "factory-off",
       "defaultB": "factory-on"
+    },
+    "factory-static": {
+      "title": "DLSS — Factory — Static — Build 1.2.0.0.47965",
+      "images": ["factory-static-off", "factory-static-balanced", "factory-static-performance"],
+      "defaultA": "factory-static-off",
+      "defaultB": "factory-static-balanced"
     }
   }
 }
